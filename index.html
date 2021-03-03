@@ -7,6 +7,9 @@
     <title>WebSockets na disciplina de sistemas distribuídos</title>
 </head>
 <body>
+    Texto a enviar:
+    <input id="caixadetexto" type="text">
+    <input id="botao" type="button" onclick="meuClick()">
     <h1>Mensagem recebida</h1>
     <div id="texto"></div>
 
@@ -25,6 +28,12 @@
         var textNode = document.createElement("div")
         textNode.innerHTML = `${message.data}`;
         minhaDiv.appendChild(textNode);
+    }
+
+    const meuClick = () => {
+        var caixaDeTexto = document.querySelector("#caixadetexto");
+
+        socket.send(caixaDeTexto.value);
     }
 
 </script>

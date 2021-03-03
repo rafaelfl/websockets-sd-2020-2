@@ -24,11 +24,11 @@ wss.on("connection", (socket) => {
         // código que o servidor vai executar quando receber uma mensagem
 
         console.log("Mensagem recebida: " + message);
-        
-        // envia de volta para o cliente uma mensagem contendo a própria
-        // mensagem recebida.
-        socket.send("Obrigado por enviar a mensagem: " + message);
-        socket.send("mensagem 2");
+
+        // envia a mensagem para todos os clientes conectados
+        wss.clients.forEach((client) => {
+            client.send(message);
+        });
     });
 });
 
