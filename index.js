@@ -1,11 +1,20 @@
+// código necessário para o deploy e execução no Heroku
+const PORT = process.env.PORT || 3000;
+const INDEX = '/index.html';
+
+const server = express()
+  .use((req, res) => res.sendFile(INDEX, { root: __dirname }))
+  .listen(PORT, () => console.log(`Servidor up and running na porta ${PORT}!`));
+
+
 // importa a biblioteca ws
 const WebSocket = require("ws");
 
 // cria o objeto do servidor WebSocket
-const server = new WebSocket.Server({ port: 8080 });
+const wss = new WebSocket.Server({ server });
 
 // evento que ocorre quando um cliente se conectar neste servidor
-server.on("connection", (socket) => {
+wss.on("connection", (socket) => {
     // imprime uma mensagem quando um cliente conectar
     console.log("Cliente conectado!");
     
@@ -21,4 +30,3 @@ server.on("connection", (socket) => {
     });
 });
 
-console.log("Servidor up and running!");

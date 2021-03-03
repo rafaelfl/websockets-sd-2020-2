@@ -2,9 +2,9 @@
   "name": "websockets-sd-2020-2",
   "version": "1.0.0",
   "description": "Projeto que utiliza recursos de websockets para criar um chat online via web.",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
-    "start": "nodemon server.js",
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,6 +18,12 @@
   },
   "homepage": "https://github.com/rafaelfl/websockets-sd-2020-2#readme",
   "dependencies": {
+    "bufferutil": "^4.0.3",
+    "express": "^4.17.1",
+    "utf-8-validate": "^5.0.4",
     "ws": "^7.4.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
   }
 }

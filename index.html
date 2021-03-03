@@ -12,7 +12,8 @@
 
 </body>
 <script>
-    const socket = new WebSocket("ws://127.0.0.1:8080");
+    var HOST = location.origin.replace(/^http/, 'ws');
+    const socket = new WebSocket(HOST);
 
     socket.onopen = () => {
         socket.send("Olá mundo!");
