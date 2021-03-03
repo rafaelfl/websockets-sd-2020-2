@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSockets na disciplina de sistemas distribuídos</title>
+</head>
+<body>
+    <h1>Mensagem recebida</h1>
+    <div id="texto"></div>
+
+</body>
+<script>
+    const socket = new WebSocket("ws://127.0.0.1:8080");
+
+    socket.onopen = () => {
+        socket.send("Olá mundo!");
+    }
+
+    socket.onmessage = (message) => {
+        var minhaDiv = document.querySelector("#texto");
+
+        var textNode = document.createElement("div")
+        textNode.innerHTML = `${message.data}`;
+        minhaDiv.appendChild(textNode);
+    }
+
+</script>
+</html>
